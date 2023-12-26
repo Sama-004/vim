@@ -4,6 +4,9 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+export PATH="/home/sama/.local/share/solana/install/active_release/bin:$PATH"
+export PATH=$PATH:/path/to/calibre
+export PATH=$PATH:/usr/pgsql-15/bin
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -72,7 +75,7 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 # ZSH_CUSTOM=/path/to/new-custom-folder
 #antigen theme romkatv/powerlevel10k
 #antigen apply
-(cat ~/.cache/wal/sequences &)
+#(cat ~/.cache/wal/sequences &)
 #zplug romkatv/powerlevel10k, as:theme, depth:1
 #zgen load romkatv/powerlevel10k powerlevel10k
 #zplugin ice depth=1; zplugin light romkatv/powerlevel10k
@@ -109,11 +112,27 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 alias mirrors="rate-mirrors --allow-root --protocol https arch | sudo tee /etc/pacman.d/mirrorlist"
-alias inc="sudo xbacklight -inc 3"
-alias dec="sudo xbacklight -dec 3"
-alias nivm=nvim
+#alias inc="sudo xbacklight -inc 3"
+#alias dec="sudo xbacklight -dec 3"
+
+
+#########NVIDIA BACKLIGHT##############
+alias inc="brightnessctl s +5%"
+alias dec="brightnessctl s 5%-"
+
+
+alias nv=nvim
 alias record="ffmpeg -f x11grab -i :0.0 -f alsa -ac 2 -i default out.mkv"
+alias fly="/home/sama/.fly/bin/flyctl"
+alias stopwatch="termdown"
+alias p="$HOME/gitpush.sh"
+
 #Example aliases
+changepip() {
+    python -m venv path/to/venv
+    source path/to/venv/bin/activate
+}
+
 #alias zshconfig="mate ~/.zshrc"
 #alias ohmyzsh="mate ~/.oh-my-zsh"
 
@@ -123,3 +142,4 @@ alias record="ffmpeg -f x11grab -i :0.0 -f alsa -ac 2 -i default out.mkv"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH=$PATH:/home/sama/.spicetify
